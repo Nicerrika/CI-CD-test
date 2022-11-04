@@ -29,4 +29,9 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 // PUT THE SERVER IN LISTENING MODE
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
 
+app.use(express.static("client"));
+app.get('*', function (req, res){
+    res.sendFile(path.join(__dirname + '/', 'client', 'index.html'));
+});
+
 
